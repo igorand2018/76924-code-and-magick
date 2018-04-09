@@ -14,7 +14,6 @@ var SEC_GAP = 18; // Расстояние от GRATZ_GAP до гистограм
 function renderCloud(ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
-
 }
 
 function getMaxElement(arr) {
@@ -29,11 +28,9 @@ function getMaxElement(arr) {
   return maxElement;
 }
 
-function getRandomColor() {
-  var r = function () {
-    return Math.floor(Math.random() * 256);
-  };
-  return 'rgb(' + 2 + ',' + 2 + ',' + r() + ')';
+function getRandomBlue() {
+  var randomBlue = Math.floor(Math.random() * 255);
+  return 'rgb(' + 0 + ',' + 0 + ',' + randomBlue + ')';
 }
 
 window.renderStatistics = function (ctx, players, times) {
@@ -52,7 +49,7 @@ window.renderStatistics = function (ctx, players, times) {
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'red';
     } else {
-      ctx.fillStyle = getRandomColor();
+      ctx.fillStyle = getRandomBlue();
     }
     ctx.fillRect(CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime), BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);// Гистограмма
     ctx.fillStyle = 'black';
