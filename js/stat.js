@@ -55,8 +55,7 @@ window.renderStatistics = function (ctx, players, times) {
 
     ctx.fillRect(CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime), BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);// Гистограмма
 
-    ctx.fillText(times[i].toFixed(), CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP - SEC_GAP);// Результат игрока в миллисекундах
-    // ctx.fillText(players[i], CLOUD_X + GAP, CLOUD_Y + GAP + FONT_GAP + (GAP + BAR_HEIGHT) * i);
-    // ctx.fillRect(CLOUD_X + GAP + TEXT_WIDTH, CLOUD_Y + GAP + (GAP + BAR_HEIGHT) * i, (barWidth * times[i]) / maxTime, BAR_HEIGHT);
+    ctx.fillText(times[i].toFixed(), CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime) - SEC_GAP);// Результат игрока в миллисекундах
+
   }
 };
