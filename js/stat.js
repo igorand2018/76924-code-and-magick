@@ -29,6 +29,13 @@ function getMaxElement(arr) {
   return maxElement;
 }
 
+function getRandomColor() {
+  var r = function () {
+    return Math.floor(Math.random() * 256);
+  };
+  return 'rgb(' + 2 + ',' + 2 + ',' + r() + ')';
+}
+
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)'); // Отрисовка тени облака
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff'); // отрисовка облака
@@ -45,11 +52,11 @@ window.renderStatistics = function (ctx, players, times) {
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'red';
     } else {
-      ctx.fillStyle = 'blue';
+      ctx.fillStyle = getRandomColor();
     }
     ctx.fillRect(CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime), BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);// Гистограмма
     ctx.fillStyle = 'black';
-    ctx.fillText(times[i].toFixed(), CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime) - SEC_GAP);// Результат игрока в миллисекундах
+    ctx.fillText(times[i].toFixed(), CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime) - SEC_GAP);// Результат игрока
     ctx.fillText(players[i], CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP + SEC_GAP + BAR_HEIGHT);// Имя игрока
   }
 };
