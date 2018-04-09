@@ -5,7 +5,7 @@ var CLOUD_HEIGHT = 270; // высота облака
 var CLOUD_X = 100; // начало координат облака по X
 var CLOUD_Y = 10; // начало координат облака по Y
 var GAP = 10; // смещение на 10 для тени от облака
-var FONT_GAP = 30;
+var FONT_GAP = 10;
 var TEXT_HEIGHT = 16;
 var TEXT_WIDTH = 50;
 var BAR_HEIGHT = 150;
@@ -45,8 +45,8 @@ window.renderStatistics = function (ctx, players, times) {
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < players.length; i++) {
-    // ctx.fillRect(CLOUD_X, CLOUD_Y + GRATZ_GAP, BAR_WIDTH, BAR_HEIGHT);
     ctx.fillText(players[i], CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP + SEC_GAP + BAR_HEIGHT);
+    ctx.fillRect(CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP, BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
     // ctx.fillText(players[i], CLOUD_X + GAP, CLOUD_Y + GAP + FONT_GAP + (GAP + BAR_HEIGHT) * i);
     // ctx.fillRect(CLOUD_X + GAP + TEXT_WIDTH, CLOUD_Y + GAP + (GAP + BAR_HEIGHT) * i, (barWidth * times[i]) / maxTime, BAR_HEIGHT);
   }
