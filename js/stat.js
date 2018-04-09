@@ -5,9 +5,9 @@ var CLOUD_HEIGHT = 270; // высота облака
 var CLOUD_X = 100; // начало координат облака по X
 var CLOUD_Y = 10; // начало координат облака по Y
 var GAP = 10; // смещение на 10 для тени от облака
-var FONT_GAP = 10;
-var TEXT_HEIGHT = 16;
-var TEXT_WIDTH = 50;
+// var FONT_GAP = 10;
+// var TEXT_HEIGHT = 16;
+// var TEXT_WIDTH = 50;
 var BAR_HEIGHT = 150;
 // var BAR_HEIGHT = CLOUD_HEIGHT - GAP - TEXT_HEIGHT - GAP;
 var BAR_WIDTH = 40; // Ширина колонки
@@ -45,8 +45,17 @@ window.renderStatistics = function (ctx, players, times) {
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < players.length; i++) {
-    ctx.fillText(players[i], CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP + SEC_GAP + BAR_HEIGHT);
-    ctx.fillRect(CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP, BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
+
+    if (players[i] === 'Вы') {
+      ctx.fillStyle = 'red';
+    } else {
+      ctx.fillStyle = 'blue';
+    }
+    ctx.fillText(players[i], CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP + SEC_GAP + BAR_HEIGHT);// Имя игрока
+
+    ctx.fillRect(CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP, BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);// Гистограмма
+
+    ctx.fillText(times[i].toFixed(), CLOUD_X + BARS_GAP + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + GRATZ_GAP - SEC_GAP);// Результат игрока в миллисекундах
     // ctx.fillText(players[i], CLOUD_X + GAP, CLOUD_Y + GAP + FONT_GAP + (GAP + BAR_HEIGHT) * i);
     // ctx.fillRect(CLOUD_X + GAP + TEXT_WIDTH, CLOUD_Y + GAP + (GAP + BAR_HEIGHT) * i, (barWidth * times[i]) / maxTime, BAR_HEIGHT);
   }
