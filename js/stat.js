@@ -28,11 +28,6 @@ function getMaxElement(arr) {
   return maxElement;
 }
 
-function getRandomBlue() {
-  var randomBlue = Math.floor(Math.random() * 255);
-  return 'rgb(' + 0 + ',' + 0 + ',' + randomBlue + ')';
-}
-
 window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)'); // Отрисовка тени облака
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff'); // отрисовка облака
@@ -44,8 +39,11 @@ window.renderStatistics = function (ctx, players, times) {
 
   var maxTime = getMaxElement(times);
 
+  function getRandomBlue() {
+    var randomBlue = Math.floor(Math.random() * 255);
+    return 'rgb(' + 0 + ',' + 0 + ',' + randomBlue + ')';
+  }
   for (var i = 0; i < players.length; i++) {
-
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'red';
     } else {
