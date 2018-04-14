@@ -10,15 +10,11 @@ function getRandomName() {
   var RandomName = WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)];
   var RandomSurname = WIZARD_SURNAMES[Math.floor(Math.random() * WIZARD_SURNAMES.length)];
   return RandomName + ' ' + RandomSurname;
-
-
 }
 
 function getRandomCoatColor() {
-
   var RandomCoatColor = COAT_COLORS[Math.floor(Math.random() * COAT_COLORS.length)];
   return RandomCoatColor;
-
 }
 function getRandomEyeColor() {
   var RandomEyeColor = EYES_COLORS[Math.floor(Math.random() * EYES_COLORS.length)];
