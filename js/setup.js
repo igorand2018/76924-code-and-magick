@@ -5,21 +5,10 @@ var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', '�
 var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
-function getRandomName() {
-  var RandomName = WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)];
-  var RandomSurname = WIZARD_SURNAMES[Math.floor(Math.random() * WIZARD_SURNAMES.length)];
-  return RandomName + ' ' + RandomSurname;
+function getRandomArrayElement(array) {
+  var randomElement = array[Math.floor(Math.random() * array.length)];
+  return randomElement;
 }
-
-function getRandomCoatColor() {
-  var RandomCoatColor = COAT_COLORS[Math.floor(Math.random() * COAT_COLORS.length)];
-  return RandomCoatColor;
-}
-function getRandomEyeColor() {
-  var RandomEyeColor = EYES_COLORS[Math.floor(Math.random() * EYES_COLORS.length)];
-  return RandomEyeColor;
-}
-
 
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
@@ -33,24 +22,24 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
 
 var wizards = [
   {
-    name: getRandomName(),
-    coatColor: getRandomCoatColor(),
-    eyesColor: getRandomEyeColor()
+    name: getRandomArrayElement(WIZARD_NAMES) + ' ' + getRandomArrayElement(WIZARD_SURNAMES),
+    coatColor: getRandomArrayElement(COAT_COLORS),
+    eyesColor: getRandomArrayElement(EYES_COLORS)
   },
   {
-    name: getRandomName(),
-    coatColor: getRandomCoatColor(),
-    eyesColor: getRandomEyeColor()
+    name: getRandomArrayElement(WIZARD_NAMES) + ' ' + getRandomArrayElement(WIZARD_SURNAMES),
+    coatColor: getRandomArrayElement(COAT_COLORS),
+    eyesColor: getRandomArrayElement(EYES_COLORS)
   },
   {
-    name: getRandomName(),
-    coatColor: getRandomCoatColor(),
-    eyesColor: getRandomEyeColor()
+    name: getRandomArrayElement(WIZARD_NAMES) + ' ' + getRandomArrayElement(WIZARD_SURNAMES),
+    coatColor: getRandomArrayElement(COAT_COLORS),
+    eyesColor: getRandomArrayElement(EYES_COLORS)
   },
   {
-    name: getRandomName(),
-    coatColor: getRandomCoatColor(),
-    eyesColor: getRandomEyeColor()
+    name: getRandomArrayElement(WIZARD_NAMES) + ' ' + getRandomArrayElement(WIZARD_SURNAMES),
+    coatColor: getRandomArrayElement(COAT_COLORS),
+    eyesColor: getRandomArrayElement(EYES_COLORS)
   }
 ];
 
