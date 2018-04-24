@@ -63,12 +63,12 @@ function onPopupEscPress(evt) {
 
 function openPopup() {
   setup.classList.remove('hidden');
-  setup.addEventListener('keydown', onPopupEscPress);
+  document.addEventListener('keydown', onPopupEscPress);
 }
 
 function closePopup() {
   setup.classList.add('hidden');
-  setup.removeEventListener('keydown', onPopupEscPress);
+  document.removeEventListener('keydown', onPopupEscPress);
 }
 
 setupOpen.addEventListener('click', function () {
@@ -92,38 +92,34 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
-document.addEventListener('keydown', function (evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
-    closePopup();
-  }
-});
-// Добавим исключение для Esc на инпуте
-var setupUserNameInput = document.querySelector('.setup-user-name');
-setupUserNameInput.addEventListener('focus', function (evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
-    openPopup();
-  }
-});
-
-// Изменение цвета глаз персонажа по нажатию
-var WizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
+var wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
+var wizardEyesForm = document.querySelector('.setup-wizard-appearance');
+var WizardEyesInput = wizardEyesForm.getElementsByTagName('input')[1];
 
 function changeEyesColor() {
-  return getRandomArrayElement(EYES_COLORS);
+  var randomEyeColor = getRandomArrayElement(EYES_COLORS);
+  return randomEyeColor;
 }
 
 
-WizardEyes.addEventListener('click', function () {
-  WizardEyes.style.fill = changeEyesColor();
+wizardEyes.addEventListener('click', function () {
+  var wizardEyesColor = changeEyesColor();
+  wizardEyes.style.fill = wizardEyesColor;
+  WizardEyesInput.value = wizardEyesColor;
+
 });
 
-// Изменение цвета фаерболов по нажатию
+
 var fireBall = document.querySelector('.setup-fireball-wrap');
-var fireBallInput = document.querySelector('.setup-fireball-wrap .setup-fireball input');
+var fireBallInput = fireBall.getElementsByTagName('input')[0];
+
 function changeFireBallColor() {
-  return getRandomArrayElement(FIREBALL_COLORS);
+  var randomFireBallColor = getRandomArrayElement(FIREBALL_COLORS);
+  return randomFireBallColor;
 }
 
 fireBall.addEventListener('click', function () {
-  fireBall.style.background = changeFireBallColor();
+  var fireBallColor = changeFireBallColor();
+  fireBall.style.background = fireBallColor;
+  fireBallInput.value = fireBallColor;
 });
