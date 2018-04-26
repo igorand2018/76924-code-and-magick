@@ -51,12 +51,14 @@ userDialog.querySelector('.setup-similar').classList.remove('hidden');
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
+var setupForm = document.querySelector('.setup-wizard-form');
+var setupUserName = setupForm.querySelector('.setup-user-name');
 
 var ENTER_KEYCODE = 13;
 var ESC_KEYCODE = 27;
 
 function onPopupEscPress(evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
+  if (evt.keyCode === ESC_KEYCODE && document.activeElement !== setupUserName) {
     closePopup();
   }
 }
@@ -108,7 +110,6 @@ wizardEyes.addEventListener('click', function () {
   WizardEyesInput.value = wizardEyesColor;
 
 });
-
 
 var fireBall = document.querySelector('.setup-fireball-wrap');
 var fireBallInput = fireBall.getElementsByTagName('input')[0];
